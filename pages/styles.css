@@ -3,7 +3,10 @@ html, body {
     width: 100%;
     scroll-behavior: smooth;
     color: white;
-    font-size: 1.2rem;
+    font-size: 1.18rem;
+    font-family: "Roboto", 'Times New Roman', Times, serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 ::-webkit-scrollbar {
@@ -18,20 +21,35 @@ html, body {
 }
 
 .form-div {
-    width: 40%;
-    height: 90vh;
+    width: 45vw;
+    height: auto;
     margin: auto 10vh auto 0;
+    border-radius: 10px;
+    background-color: rgb(45, 45, 45);
+    min-height: 200px;
+    margin-right: 30px;
+}
+
+.answer-div {
+    border-radius: 10px;
+    border-color: white;
+    border-width: 2px;
+    border-style: solid;
+    width: 45vw;
+    min-height: 200px;
 }
 
 .centered-div {
     margin: 100px auto 0 auto;
     width: auto;
+    text-align: center;
 }
 
 .flex-container {
     display: flex;
     width: 100vw;
-    justify-content: space-around;
+    justify-content: center;
+    margin-top: 40px
 }
 
 form {

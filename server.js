@@ -2,6 +2,8 @@ import express from "express";
 import path from "path";
 import pg from "pg";
 import * as dotenv from 'dotenv';
+import fs from "fs";
+import { time } from "console";
 
 dotenv.config();
 
@@ -17,15 +19,41 @@ const postgres = new pg.Client({
 
 await postgres.connect();
 
-console.log(await postgres.query("SELECT NOW()"))
-
 app.use("/", express.static(process.cwd() + "/pages"));
 
-app.all("*", (req, res) => {
-  res.status(302).redirect("/");
-});
+// ! Query handler
+let queryFolders = fs.readdir("queries", (err, folders) => {
+    if (err) {
+      console.error("Could not open query folder.");
+      process.exit(1);
+    }
+    
+    folders.forEach(folder => {
+      console.log("Opened folder: " + folder)
+      fs.readdir(path.join("queries", folder), (err, queryFiles) => {
 
-app.listen(2532, () => {
-  console.log("CSI2532 server online, listening on port 2532.");
-});
+        if(err) {
+          console.error("Could not open file: " + folder);
+          process.exit(1);
+        }
+
+        queryFiles.forEach(async queryFile => {
+          console.log("Opened query file: " + queryFile);
+          let path = "/queries/" + folder + "/" + queryFile;
+          app.get(path.replace(/\.js/, ""), (await import(process.cwd() + path)).default.run);
+        })
+      });
+    })
+})
+
+setTimeout(() => {
+  app.all("*", (req, res) => {
+    res.status(302).redirect("/");
+  });
+
+  app.listen(2532, () => {
+    console.log("CSI2532 server online, listening on port 2532.");
+  });
+
+}, 2500);
 
