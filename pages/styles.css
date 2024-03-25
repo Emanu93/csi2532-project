@@ -1,0 +1,40 @@
+html, body {
+    background-color: rgb(24, 24, 24);
+    width: 100%;
+    scroll-behavior: smooth;
+    color: white;
+    font-size: 1.2rem;
+}
+
+::-webkit-scrollbar {
+    max-width: 15px; 
+    width: 0.8vw;
+    min-width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(56, 56, 56);
+    border-radius: 0.45vw;
+}
+
+.form-div {
+    width: 40%;
+    height: 90vh;
+    margin: auto 10vh auto 0;
+}
+
+.centered-div {
+    margin: 100px auto 0 auto;
+    width: auto;
+}
+
+.flex-container {
+    display: flex;
+    width: 100vw;
+    justify-content: space-around;
+}
+
+form {
+    
+}
+
