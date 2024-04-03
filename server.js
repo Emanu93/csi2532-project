@@ -4,6 +4,7 @@ import pg from "pg";
 import * as dotenv from 'dotenv';
 import fs from "fs";
 import { time } from "console";
+import nocache from "nocache";
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ const postgres = new pg.Client({
 
 await postgres.connect();
 
+app.use(nocache());
 app.use("/", express.static(process.cwd() + "/pages"));
 
 // ! Query handler
@@ -40,7 +42,7 @@ let queryFolders = fs.readdir("queries", (err, folders) => {
         queryFiles.forEach(async queryFile => {
           console.log("Opened query file: " + queryFile);
           let path = "/queries/" + folder + "/" + queryFile;
-          app.get(path.replace(/\.js/, ""), (await import(process.cwd() + path)).default.run);
+          app.get(path.replace(/\.js/, ""), async (req, res) => { (await import(process.cwd() + path)).default.run(req, res, postgres) });
         })
       });
     })

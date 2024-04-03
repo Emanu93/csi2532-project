@@ -3,9 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Client</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="index.js"></script>
+    <script src="client.js"></script>
 </head>
 <body>
-    
+    <a href="/", style="display: block;">← Retourner</a>
+    <div class="flex-container">
+        <div class="form-div">
+            Rechercher une chambre d'hôtel<br>
+            <form autocomplete="off" action="return false">
+                <label style="color: red">* Obligatoire<br><br></label>
+                Du &nbsp&nbsp<input type="date" id="startDate" name="startDate" placeholder="Date de début">*&nbsp&nbsp au &nbsp&nbsp<input type="date" id="endDate" name="endDate" placeholder="Date de fin">*
+                <br><br>Capacité de la chambre &nbsp&nbsp<input type="number" id="capacity" name="capacity" placeholder="Au moins x personnes">
+                <br>Superficie de la chambre &nbsp&nbsp<input type="number" id="size" name="size" placeholder="Au moins x mètres carrés">
+                <br>Chaine hotelière &nbsp&nbsp<input list="chaines" id="chaine" name="chaine">
+                    <datalist id="chaines">
+                        
+                    </datalist>
+                <br>Catégorie de l'hôtel &nbsp&nbsp<input list="categories" id="categorie" name="categorie">
+                    <datalist id="categories">
+                        
+                    </datalist>
+                <br>Rating de l'hôtel &nbsp&nbsp<input type="range" id="rating" name="rating" min="1" max="5" value="1" oninput="document.getElementById('ratingVal').innerHTML=this.value">&nbsp&nbsp<span id="ratingVal">1</span>
+                <br>Nombre de chambres dans l'hôtel &nbsp&nbsp<input type="number" id="amountRooms" name="amountRooms" placeholder="Au moins x chambres">
+                <br>Prix &nbsp&nbsp<input type="number" id="price" name="price" placeholder="Moins de x $">
+                <br><button type="button" onclick="searchRooms()">Rechercher</button>
+            </form>
+        </div>
+        <div class="answer-div" id="searchRoomAnswer">
+            
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="form-div">
+            Réserver une chambre d'hôtel<br>
+            <form autocomplete="off" action="return false" style="font-size: 1rem">
+                <br>Date début: <span id="res_debut"></span>
+                <br>Date fin: <span id="res_fin"></span>
+                <br>Chaine: <span id="nom_chaine"></span>
+                <br>Chaine #: <span id="res_chaine"></span>
+                <br>Hotel: <span id="nom_hotel"></span>
+                <br>Hotel #: <span id="res_hotel"></span>
+                <br>Chambre #: <span id="res_room"></span>
+                <br><br>Veuillez entrer votre NAS pour associer la réservation à votre compte:
+                <br><input type="number" id="res_nas" name="res_nas" placeholder="NAS">
+                <br><button type="button" onclick="bookQuery()">Réserver</button>
+            </form>
+        </div>
+        <div class="answer-div" id="bookAnswer">
+            
+        </div>
+    </div>
 </body>
-</html>

@@ -1,58 +1,80 @@
-html, body {
-    background-color: rgb(24, 24, 24);
-    width: 100%;
-    scroll-behavior: smooth;
-    color: white;
-    font-size: 1.18rem;
-    font-family: "Roboto", 'Times New Roman', Times, serif;
-    font-weight: 400;
-    font-style: normal;
+html,
+body {
+  background-color: rgb(24, 24, 24);
+  width: 100%;
+  scroll-behavior: smooth;
+  color: white;
+  font-size: 1.18rem;
+  font-family: "Roboto", "Times New Roman", Times, serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 ::-webkit-scrollbar {
-    max-width: 15px; 
-    width: 0.8vw;
-    min-width: 6px;
+  max-width: 15px;
+  width: 0.8vw;
+  min-width: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: rgb(56, 56, 56);
-    border-radius: 0.45vw;
+  background-color: rgb(56, 56, 56);
+  border-radius: 0.45vw;
 }
 
-.form-div {
-    width: 45vw;
-    height: auto;
-    margin: auto 10vh auto 0;
-    border-radius: 10px;
-    background-color: rgb(45, 45, 45);
-    min-height: 200px;
-    margin-right: 30px;
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-.answer-div {
-    border-radius: 10px;
-    border-color: white;
-    border-width: 2px;
-    border-style: solid;
-    width: 45vw;
-    min-height: 200px;
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
-.centered-div {
-    margin: 100px auto 0 auto;
-    width: auto;
-    text-align: center;
-}
-
-.flex-container {
-    display: flex;
-    width: 100vw;
-    justify-content: center;
-    margin-top: 40px
+a {
+  color: lightblue;
 }
 
 form {
-    
+    font-size: 1rem;
 }
 
+.form-div {
+  width: 43vw;
+  height: auto;
+  margin: 0 10vh 0 0;
+  border-radius: 10px;
+  background-color: rgb(45, 45, 45);
+  min-height: 200px;
+  margin-right: 30px;
+  padding: 10px 1vw 10px 1vw;
+}
+
+.answer-div {
+  border-radius: 10px;
+  border-color: white;
+  border-width: 2px;
+  border-style: solid;
+  width: 43vw;
+  min-height: 200px;
+  padding: 10px 1vw 10px 1vw;
+  font-size: 0.9rem;
+}
+
+.centered-div {
+  margin: 100px auto 0 auto;
+  width: auto;
+  text-align: center;
+}
+
+.flex-container {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  margin-top: 40px;
+  align-items: start;
+}
+
+form {
+}
