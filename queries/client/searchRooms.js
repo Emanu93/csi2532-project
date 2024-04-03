@@ -31,8 +31,8 @@ export default {
         AND (room.prix <= CAST($9 AS INTEGER))
       `;
     let values = [
-      new Date(req.query.startDate),
-      new Date(req.query.endDate),
+      (new Date(req.query.startDate)).addHours(12),
+      (new Date(req.query.endDate)).addHours(12),
       parseInt(req.query.capacity || "0"),
       parseInt(req.query.size || "0"),
       req.query.chaine || "null",
@@ -45,7 +45,6 @@ export default {
     values.forEach((val) => console.log(typeof val + " " + val));
 
     let data = await pg.query(query, values);
-    console.log(data);
     res.send(data.rows);
   },
 };

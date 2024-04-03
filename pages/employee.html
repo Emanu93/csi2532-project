@@ -37,8 +37,8 @@
             Transformer une réservation en location<br><span style="font-size: 1rem">Lorsque le paiement est fait</span><br><br>
             <form autocomplete="off" action="return false">
                 <label>Veuillez entrer l'ID de réservation:<br></label>
-                <input type="number" id="locationResId" name="locationResId" placeholder="Reservation ID">
-                <button type="button" onclick="callReservationNumber()">Soumettre</button>
+                <input type="number" id="loc_resId" name="loc_resId" placeholder="Reservation ID">
+                <button type="button" onclick="toLocationButton()">Soumettre</button>
             </form>
         </div>
         <div class="answer-div" id="locationAnswer">
@@ -50,17 +50,42 @@
         <div class="form-div">
             Créer une location payée pour un client<br><br>
             <form autocomplete="off" action="return false">
-                <label>Par ID de réservation:<br></label>
-                <input type="number" id="resId" name="resId" placeholder="Reservation ID">
-                <button type="button" onclick="callReservationNumber()">Soumettre</button>
-                <br><br> OU <br><br>
-                <label>Par nom de client:<br></label>
-                <input type="text" id="clientPN" name="clientPN" placeholder="Prenom">
-                <input type="text" id="clientNom" name="clientNom" placeholder="Nom de famille">
-                <button type="button" onclick="callReservationName()">Soumettre</button>
+                ID de la chaine hotelière &nbsp&nbsp<input type="number" id="b_cid" name="b_cid" placeholder="num_chaine">
+                <br>ID de l'hotel &nbsp&nbsp<input type="number" id="b_hid" name="b_hid" placeholder="num_hotel">
+                <br>Numéro de chambre &nbsp&nbsp<input type="number" id="b_rid" name="b_rid" placeholder="num_chambre">
+                <br>NAS du client &nbsp&nbsp<input type="number" id="b_nas" name="b_nas" placeholder="NAS">
+                <br>Du &nbsp&nbsp<input type="date" id="b_startDate" name="b_startDate" placeholder="Date de début">&nbsp&nbsp au &nbsp&nbsp<input type="date" id="b_endDate" name="b_endDate" placeholder="Date de fin">
+                <br><button type="button" onclick="createLocationButton()">Soumettre</button>
             </form>
         </div>
-        <div class="answer-div" id="searchReservationAnswer">
+        <div class="answer-div" id="createLocationAnswer">
+            
+        </div>
+    </div>
+
+    <div class="flex-container">
+        <div class="form-div">
+            Trouver une chambre d'hôtel pour un client<br>
+            <form autocomplete="off" action="return false">
+                <label style="color: red">* Obligatoire<br><br></label>
+                Du &nbsp&nbsp<input type="date" id="startDate" name="startDate" placeholder="Date de début">*&nbsp&nbsp au &nbsp&nbsp<input type="date" id="endDate" name="endDate" placeholder="Date de fin">*
+                <br><br>Capacité de la chambre &nbsp&nbsp<input type="number" id="capacity" name="capacity" placeholder="Au moins x personnes">
+                <br>Superficie de la chambre &nbsp&nbsp<input type="number" id="size" name="size" placeholder="Au moins x mètres carrés">
+                <br>Chaine hotelière &nbsp&nbsp<input list="chaines" id="chaine" name="chaine">
+                    <datalist id="chaines">
+                        
+                    </datalist>
+                <br>Catégorie de l'hôtel &nbsp&nbsp<input list="categories" id="categorie" name="categorie">
+                    <datalist id="categories">
+                        
+                    </datalist>
+                <br>Classement de l'hôtel &nbsp&nbsp<input type="range" id="rating" name="rating" min="1" max="5" value="1" oninput="document.getElementById('ratingVal').innerHTML=this.value">&nbsp&nbspAu moins <span id="ratingVal">1</span> étoile(s)
+                <br>Nombre de chambres dans l'hôtel &nbsp&nbsp<input type="number" id="amountRooms" name="amountRooms" placeholder="Au moins x chambres">
+                <br>Prix &nbsp&nbsp<input type="number" id="price" name="price" placeholder="Moins de x $">
+                <br><button type="button" onclick="employeeSearchRooms()">Rechercher</button>
+            </form>
+        </div>
+        <div class="answer-div" id="employeeSearchRoomAnswer">
             
         </div>
     </div>

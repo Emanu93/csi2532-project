@@ -29,7 +29,7 @@
                     <datalist id="categories">
                         
                     </datalist>
-                <br>Rating de l'hôtel &nbsp&nbsp<input type="range" id="rating" name="rating" min="1" max="5" value="1" oninput="document.getElementById('ratingVal').innerHTML=this.value">&nbsp&nbsp<span id="ratingVal">1</span>
+                <br>Classement de l'hôtel &nbsp&nbsp<input type="range" id="rating" name="rating" min="1" max="5" value="1" oninput="document.getElementById('ratingVal').innerHTML=this.value">&nbsp&nbspAu moins <span id="ratingVal">1</span> étoile(s)
                 <br>Nombre de chambres dans l'hôtel &nbsp&nbsp<input type="number" id="amountRooms" name="amountRooms" placeholder="Au moins x chambres">
                 <br>Prix &nbsp&nbsp<input type="number" id="price" name="price" placeholder="Moins de x $">
                 <br><button type="button" onclick="searchRooms()">Rechercher</button>
@@ -56,6 +56,29 @@
             </form>
         </div>
         <div class="answer-div" id="bookAnswer">
+            
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="form-div">
+            Créer un compte client<br>
+            <form autocomplete="off" action="return false" style="font-size: 1rem">
+                <br>Entrez votre numéro d'assurance sociale &nbsp&nbsp<input type="number" id="acc_nas" name="account_nas" placeholder="NAS">
+                <br>Prénom &nbsp&nbsp<input type="text" id="acc_prenom" name="acc_prenom" placeholder="Prénom">
+                <br>Nom &nbsp&nbsp<input type="text" id="acc_nom" name="acc_nom" placeholder="Nom">
+                <br>Ville &nbsp&nbsp<input type="text" id="acc_ville" name="acc_ville" placeholder="Ville">
+                <br>Province &nbsp&nbsp<input type="text" id="acc_province" name="acc_province" placeholder="Province">
+                <br>Rue &nbsp&nbsp<input type="text" id="acc_rue" name="acc_rue" placeholder="Nom de rue">
+                <br>Numéro civique &nbsp&nbsp<input type="number" id="acc_num" name="acc_num" placeholder="Numéro de rue">
+                <br>Code postal &nbsp&nbsp<input type="text" id="acc_cp" name="acc_cp" placeholder="A1B2C3">
+                <br>Numéros de téléphone, format: 6131237890;8192127365 (séparer les numéros avec ;)
+                <br><input type="text" id="acc_tels" name="acc_tels" placeholder="1234567890">
+                <br>Courriels, format: abc@gmail.com;test@emanusprojects.com (séparer les courriels avec ;)
+                <br><input type="text" id="acc_emails" name="acc_emails" placeholder="test@emanusprojects.com">
+                <br><button type="button" onclick="createAccountButton()">Créer un compte</button>
+            </form>
+        </div>
+        <div class="answer-div" id="createAccountAnswer">
             
         </div>
     </div>
