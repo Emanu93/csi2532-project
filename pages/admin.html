@@ -12,5 +12,167 @@
     <script src="admin.js"></script>
 </head>
 <body>
-    
+    <div class="flex-container">
+        <div class="form-div">
+            Voir les chaines existantes
+            <form autocomplete="off" action="return false" style="font-size: 1rem">
+                <br><button type="button" onclick="viewChaines()">Voir</button>
+            </form>
+            <br><br>
+            Créer une chaine hotelière<br>
+            <form autocomplete="off" action="return false" style="font-size: 1rem">
+                <br>Nom de la chaine &nbsp&nbsp<input type="text" id="ch_nom" name="ch_nom" placeholder="Nom">
+                <br>Ville &nbsp&nbsp<input type="text" id="ch_ville" name="ch_ville" placeholder="Ville">
+                <br>Province &nbsp&nbsp<input type="text" id="ch_province" name="ch_province" placeholder="Province">
+                <br>Rue &nbsp&nbsp<input type="text" id="ch_rue" name="ch_rue" placeholder="Nom de rue">
+                <br>Numéro civique &nbsp&nbsp<input type="number" id="ch_num" name="ch_num" placeholder="Numéro de rue">
+                <br>Code postal &nbsp&nbsp<input type="text" id="ch_cp" name="ch_cp" placeholder="A1B2C3">
+                <br>Numéros de téléphone, format: 6131237890;8192127365 (séparer les numéros avec ;)
+                <br><input type="text" id="ch_tels" name="ch_tels" placeholder="1234567890">
+                <br>Courriels, format: abc@gmail.com;test@emanusprojects.com (séparer les courriels avec ;)
+                <br><input type="text" id="ch_emails" name="ch_emails" placeholder="test@emanusprojects.com">
+                <br><button type="button" onclick="createChaine()">Créer une chaine</button>
+            </form>
+            <br><br>
+            Supprimer une chaine hôtelière<br>
+            <br>ID de la chaine &nbsp&nbsp<input type="number" id="del_chaine_id" name="del_chaine_id" placeholder="num_chaine">
+            <br><button type="button" onclick="deleteChaine()">Supprimer la chaine</button>
+        </div>
+        <div class="answer-div" id="chaineAnswer">
+            
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="form-div">
+            Voir les hotels existantes pour une chaine
+            <form autocomplete="off" action="return false" style="font-size: 1rem">
+                <br>ID de la chaine &nbsp&nbsp<input type="number" id="search_h_ch_id" name="search_h_ch_id" placeholder="num_chaine">
+                <br><button type="button" onclick="viewHotels()">Voir</button>
+            </form>
+            <br><br>
+            Créer une hotel<br>
+            <form autocomplete="off" action="return false" style="font-size: 1rem">
+                <br>ID de la chaine &nbsp&nbsp<input type="number" id="h_ch_id" name="h_ch_id" placeholder="num_chaine">
+                <br>Nom de l'hôtel &nbsp&nbsp<input type="text" id="h_nom" name="h_nom" placeholder="Nom">
+                <br>Catégorie de l'hôtel &nbsp&nbsp<input type="text" id="h_categorie" name="h_categorie" placeholder="e.g. Bed and breakfast">à
+                <br>Zone de l'hôtel &nbsp&nbsp<input type="text" id="h_zone" name="h_zone" placeholder="Endroit">
+                <br>Classement de l'hôtel &nbsp&nbsp<input type="range" id="h_rating" name="h_rating" min="1" max="5" value="1" oninput="document.getElementById('ratingVal').innerHTML=this.value">&nbsp&nbsp<span id="ratingVal">1</span> étoile(s)
+                <br>Ville &nbsp&nbsp<input type="text" id="h_ville" name="h_ville" placeholder="Ville">
+                <br>Province &nbsp&nbsp<input type="text" id="h_province" name="h_province" placeholder="Province">
+                <br>Rue &nbsp&nbsp<input type="text" id="h_rue" name="h_rue" placeholder="Nom de rue">
+                <br>Numéro civique &nbsp&nbsp<input type="number" id="h_num" name="h_num" placeholder="Numéro de rue">
+                <br>Code postal &nbsp&nbsp<input type="text" id="h_cp" name="h_cp" placeholder="A1B2C3">
+                <br>Numéros de téléphone, format: 6131237890;8192127365 (séparer les numéros avec ;)
+                <br><input type="text" id="h_tels" name="h_tels" placeholder="1234567890">
+                <br>Courriels, format: abc@gmail.com;test@emanusprojects.com (séparer les courriels avec ;)
+                <br><input type="text" id="h_emails" name="h_emails" placeholder="test@emanusprojects.com">
+                <br><button type="button" onclick="createHotel()">Créer une hôtel</button>
+            </form>
+            <br><br>
+            Supprimer une hotel<br>
+            <form autocomplete="off" action="return false" style="font-size: 1rem">
+                <br>ID de la chaine &nbsp&nbsp<input type="number" id="del_hotel_ch_id" name="del_hotel_ch_id" placeholder="num_chaine">
+                <br>ID de l'hôtel &nbsp&nbsp<input type="number" id="del_hotel_h_id" name="del_hotel_h_id" placeholder="num_hotel">
+                <br><button type="button" onclick="deleteHotel()">Supprimer l'hôtel</button>
+            </form>
+        </div>
+        <div class="answer-div" id="hotelAnswer">
+            
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="form-div">
+            Voir les chambres existantes d'une hôtel
+            <form autocomplete="off" action="return false" style="font-size: 1rem">
+                <br>ID de la chaine &nbsp&nbsp<input type="number" id="search_r_ch_id" name="search_r_ch_id" placeholder="num_chaine">
+                <br>ID de l'hôtel &nbsp&nbsp<input type="number" id="search_r_h_id" name="search_r_h_id" placeholder="num_hotel">
+                <br><button type="button" onclick="viewRooms()">Voir</button>
+            </form>
+            <br><br>
+            Créer une chambre<br>
+            <form autocomplete="off" action="return false" style="font-size: 1rem">
+                <br>ID de la chaine &nbsp&nbsp<input type="number" id="r_ch_id" name="r_ch_id" placeholder="num_chaine">
+                <br>ID de l'hôtel &nbsp&nbsp<input type="number" id="r_h_id" name="r_h_id" placeholder="num_hotel">
+                <br>Numéro de chambre &nbsp&nbsp<input type="number" id="r_num" name="r_num" placeholder="Numéro de chambre">
+                <br>Capacité &nbsp&nbsp<input type="number" id="r_capacity" name="r_capacity" placeholder="Nombre de personnes maximal">
+                <br>Vue<br><textarea maxlength="250" id="r_vue"></textarea>
+                <br>Problèmes<br><textarea maxlength="2000" id="r_probleme"></textarea>
+                <br>Superficie &nbsp&nbsp<input type="number" id="r_size" name="r_size" placeholder="m^2">
+                <br>Peut être étendue &nbsp&nbsp<input type="checkbox" id="r_etendre" name="r_etendre">
+                <br>Commodités<br>
+                <span id="r_commodites" style="font-size:0.83rem"></span>
+                <br><button type="button" onclick="createRoom()">Créer la chambre</button>
+            </form>
+            <br><br>
+            Supprimer une chambre<br>
+            <form autocomplete="off" action="return false" style="font-size: 1rem">
+                <br>ID de la chaine &nbsp&nbsp<input type="number" id="del_r_ch_id" name="del_r_ch_id" placeholder="num_chaine">
+                <br>ID de l'hôtel &nbsp&nbsp<input type="number" id="del_r_h_id" name="del_r_h_id" placeholder="num_hotel">
+                <br>Numéro de chambre &nbsp&nbsp<input type="number" id="del_r_num" name="del_r_num" placeholder="Numéro de chambre">
+                <br><button type="button" onclick="deleteRoom()">Supprimer la chambre</button>
+            </form>
+        </div>
+        <div class="answer-div" id="roomAnswer">
+            
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="form-div">
+            Voir les employés d'une hôtel
+            <form autocomplete="off" action="return false" style="font-size: 1rem">
+                <br>ID de la chaine &nbsp&nbsp<input type="number" id="search_e_ch_id" name="search_e_ch_id" placeholder="num_chaine">
+                <br>ID de l'hôtel &nbsp&nbsp<input type="number" id="search_e_h_id" name="search_e_h_id" placeholder="num_hotel">
+                <br><button type="button" onclick="viewEmployees()">Voir</button>
+            </form>
+            <br><br>
+            Créer un compte employé<br>
+            <form autocomplete="off" action="return false" style="font-size: 1rem">
+                <br>ID de la chaine &nbsp&nbsp<input type="number" id="e_ch_id" name="e_ch_id" placeholder="num_chaine">
+                <br>ID de l'hôtel &nbsp&nbsp<input type="number" id="e_h_id" name="e_h_id" placeholder="num_hotel">
+                <br>Prénom &nbsp&nbsp<input type="text" id="e_prenom" name="e_prenom" placeholder="Prenom">
+                <br>Nom de famille &nbsp&nbsp<input type="text" id="e_nom" name="e_nom" placeholder="Nom">
+                <br>Désigner comme unique gestionnaire de son hotel &nbsp&nbsp<input type="checkbox" id="e_gestionnaire" name="e_gestionnaire">
+                <br>Rôles<br>
+                <span id="r_roles" style="font-size:0.83rem"></span>
+                <br>Ville &nbsp&nbsp<input type="text" id="e_ville" name="e_ville" placeholder="Ville">
+                <br>Province &nbsp&nbsp<input type="text" id="e_province" name="e_province" placeholder="Province">
+                <br>Rue &nbsp&nbsp<input type="text" id="e_rue" name="e_rue" placeholder="Nom de rue">
+                <br>Numéro civique &nbsp&nbsp<input type="number" id="e_num" name="e_num" placeholder="Numéro de rue">
+                <br>Code postal &nbsp&nbsp<input type="text" id="e_cp" name="e_cp" placeholder="A1B2C3">
+                <br>Numéros de téléphone, format: 6131237890;8192127365 (séparer les numéros avec ;)
+                <br><input type="text" id="e_tels" name="e_tels" placeholder="1234567890">
+                <br>Courriels, format: abc@gmail.com;test@emanusprojects.com (séparer les courriels avec ;)
+                <br><input type="text" id="e_emails" name="e_emails" placeholder="test@emanusprojects.com">          
+                <br><button type="button" onclick="createEmployee()">Créer le compte employé</button>
+            </form>
+            <br><br>
+            Supprimer un compte employé<br>
+            <form autocomplete="off" action="return false" style="font-size: 1rem">
+                <br>NAS de l'employé &nbsp&nbsp<input type="number" id="del_e_nas" name="del_e_nas" placeholder="NAS">
+                <br><button type="button" onclick="deleteEmployee()">Supprimer le compte employé</button>
+            </form>
+        </div>
+        <div class="answer-div" id="employeeAnswer">
+            
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="form-div">
+            Trouver un compte client par nom
+            <form autocomplete="off" action="return false" style="font-size: 1rem">
+                <input type="text" id="c_prenom" name="c_prenom" placeholder="Prenom">
+                <input type="text" id="c_nom" name="c_nom" placeholder="Nom de famille">
+                <button type="button" onclick="searchClient()">Soumettre</button>
+            </form>
+            Supprimer un compte client<br>
+            <form autocomplete="off" action="return false" style="font-size: 1rem">
+                <br>NAS du client &nbsp&nbsp<input type="number" id="del_c_nas" name="del_c_nas" placeholder="NAS">
+                <br><button type="button" onclick="deleteClient()">Supprimer le compte client</button>
+            </form>
+        </div>
+        <div class="answer-div" id="clientAnswer">
+            
+        </div>
+    </div>
+
 </body>
