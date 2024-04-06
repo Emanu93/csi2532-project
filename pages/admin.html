@@ -54,7 +54,10 @@
             <form autocomplete="off" action="return false" style="font-size: 1rem">
                 <br>ID de la chaine &nbsp&nbsp<input type="number" id="h_ch_id" name="h_ch_id" placeholder="num_chaine">
                 <br>Nom de l'hôtel &nbsp&nbsp<input type="text" id="h_nom" name="h_nom" placeholder="Nom">
-                <br>Catégorie de l'hôtel &nbsp&nbsp<input type="text" id="h_categorie" name="h_categorie" placeholder="e.g. Bed and breakfast">à
+                <br>Catégorie de l'hôtel &nbsp&nbsp<input list="categories" id="h_categorie" name="h_categorie" placeholder="e.g. Bed and breakfast">
+                    <datalist id="categories">
+                        
+                    </datalist>
                 <br>Zone de l'hôtel &nbsp&nbsp<input type="text" id="h_zone" name="h_zone" placeholder="Endroit">
                 <br>Classement de l'hôtel &nbsp&nbsp<input type="range" id="h_rating" name="h_rating" min="1" max="5" value="1" oninput="document.getElementById('ratingVal').innerHTML=this.value">&nbsp&nbsp<span id="ratingVal">1</span> étoile(s)
                 <br>Ville &nbsp&nbsp<input type="text" id="h_ville" name="h_ville" placeholder="Ville">
@@ -95,8 +98,9 @@
                 <br>ID de l'hôtel &nbsp&nbsp<input type="number" id="r_h_id" name="r_h_id" placeholder="num_hotel">
                 <br>Numéro de chambre &nbsp&nbsp<input type="number" id="r_num" name="r_num" placeholder="Numéro de chambre">
                 <br>Capacité &nbsp&nbsp<input type="number" id="r_capacity" name="r_capacity" placeholder="Nombre de personnes maximal">
+                <br>Prix &nbsp&nbsp<input type="number" id="r_prix" name="r_prix" placeholder="$">
                 <br>Vue<br><textarea maxlength="250" id="r_vue"></textarea>
-                <br>Problèmes<br><textarea maxlength="2000" id="r_probleme"></textarea>
+                <br>Problèmes<br><textarea maxlength="2000" id="r_problemes"></textarea>
                 <br>Superficie &nbsp&nbsp<input type="number" id="r_size" name="r_size" placeholder="m^2">
                 <br>Peut être étendue &nbsp&nbsp<input type="checkbox" id="r_etendre" name="r_etendre">
                 <br>Commodités<br>
@@ -127,13 +131,14 @@
             <br><br>
             Créer un compte employé<br>
             <form autocomplete="off" action="return false" style="font-size: 1rem">
+                <br>NAS de l'employé &nbsp&nbsp<input type="number" id="e_nas" name="e_nas" placeholder="NAS">
                 <br>ID de la chaine &nbsp&nbsp<input type="number" id="e_ch_id" name="e_ch_id" placeholder="num_chaine">
                 <br>ID de l'hôtel &nbsp&nbsp<input type="number" id="e_h_id" name="e_h_id" placeholder="num_hotel">
                 <br>Prénom &nbsp&nbsp<input type="text" id="e_prenom" name="e_prenom" placeholder="Prenom">
                 <br>Nom de famille &nbsp&nbsp<input type="text" id="e_nom" name="e_nom" placeholder="Nom">
                 <br>Désigner comme unique gestionnaire de son hotel &nbsp&nbsp<input type="checkbox" id="e_gestionnaire" name="e_gestionnaire">
                 <br>Rôles<br>
-                <span id="r_roles" style="font-size:0.83rem"></span>
+                <span id="e_roles" style="font-size:0.83rem"></span>
                 <br>Ville &nbsp&nbsp<input type="text" id="e_ville" name="e_ville" placeholder="Ville">
                 <br>Province &nbsp&nbsp<input type="text" id="e_province" name="e_province" placeholder="Province">
                 <br>Rue &nbsp&nbsp<input type="text" id="e_rue" name="e_rue" placeholder="Nom de rue">
@@ -163,7 +168,7 @@
                 <input type="text" id="c_prenom" name="c_prenom" placeholder="Prenom">
                 <input type="text" id="c_nom" name="c_nom" placeholder="Nom de famille">
                 <button type="button" onclick="searchClient()">Soumettre</button>
-            </form>
+            </form><br><br>
             Supprimer un compte client<br>
             <form autocomplete="off" action="return false" style="font-size: 1rem">
                 <br>NAS du client &nbsp&nbsp<input type="number" id="del_c_nas" name="del_c_nas" placeholder="NAS">

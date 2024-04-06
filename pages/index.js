@@ -32,6 +32,16 @@ const handleParams = (url, ...params) => {
   return res;
 };
 
+const handleCheckedParams = (url, ...params) => {
+  let res = {};
+  params.forEach((param) => {
+    let val = document.getElementById(param).checked;
+    url.searchParams.append(param, val);
+    res[param] = val;
+  });
+  return res;
+};
+
 const createAdresse = async (ville, province, rue, num_rue, code_postal, num_tels, emails) => {
     const url = new URL(
     "https://" +
